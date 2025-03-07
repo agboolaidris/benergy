@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --font-raleway: "Raleway", serif;
+  --color-brand-black: #444040;
+  --color-brand-primary: #00aff0;
+  --color-brand-primary50: #04acf3;
+  --color-brand-secondary: #04324d;
+  --color-brand-gray: #f9f8fc;
+}
