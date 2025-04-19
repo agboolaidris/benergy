@@ -7,7 +7,6 @@ import { Footer } from "./components/Footer";
 import { Wrapper } from "./components/Wrapper";
 import { Navbar } from "./components/Navbar";
 import { ContactSection } from "./modules/Contact";
-import { CustomReview } from "./modules/CustomReview";
 import { ServicePage } from "./pages/ServicePage";
 import { AboutPage } from "./pages/AboutPage";
 
