@@ -11,7 +11,7 @@ const navLinks = [
 ];
 const contacts = [
   {
-    href: "https://www.instagram.com/intrasolutionsc?igsh=dWpjOGN0djY1cXg1",
+    href: "https://www.instagram.com/benargy_es?igsh=azRoZDVyOGdodmQw&utm_source=qrnstagram",
     icon: InstagramIcon,
   },
   {
@@ -19,7 +19,7 @@ const contacts = [
     icon: FacebookIcon,
   },
   {
-    href: "",
+    href: "https://www.tiktok.com/@benargy?_t=ZM-8u5G00QoQR4&_r=1Tiktok",
     icon: TikTokIcon,
   },
 ];
@@ -31,16 +31,13 @@ export const Footer = () => {
       <div className="flex justify-between gap-8 flex-wrap mt-8 sm:mt-12">
         <div className="space-y-5 max-w-lg w-full">
           <div>
-            <BodyText className="!font-bold !text-black">Nigeria</BodyText>
-            <BodyText className="">
-              12 Victoria Arobieke street, Lekki phase 1, Lagos.
-            </BodyText>
+            <BodyText className="!font-bold !text-black">Contact</BodyText>
+            <BodyText className="">08091167852, 09031257244</BodyText>
           </div>
           <div>
-            <BodyText className="!font-bold !text-black">Turkiye</BodyText>
+            <BodyText className="!font-bold !text-black">Address</BodyText>
             <BodyText className="">
-              19 Mayis Mah. , Turapoglu Sk, Hamdiye Yazgan is merkezi, No 4
-              kat2, Kozyatağı/ İstanbul.
+              24,Olusoji imole street, Mile 12, Lagos.
             </BodyText>
           </div>
         </div>

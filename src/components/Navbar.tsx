@@ -3,19 +3,19 @@ import { Button } from "./Button";
 import { Logo } from "./Logo";
 import { Bar3Icon, XMarkIcon } from "../icons/Bar";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About Us" },
-  { href: "#mission", label: "Mission" },
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About Us" },
 ];
 
 export const Navbar = () => {
   const [openMobile, setOpenMobile] = useState(false);
   return (
     <div>
-      <nav className="flex justify-between items-center gap-8">
+      <nav className="flex justify-between items-center gap-8 py-4">
         <button
           className="md:hidden"
           onClick={() => setOpenMobile((prev) => !prev)}
@@ -30,15 +30,15 @@ export const Navbar = () => {
 
         <div className="flex-1 gap-12 justify-center hidden md:flex">
           {navLinks.map(({ href, label }, idx) => (
-            <a
+            <Link
               key={idx}
-              href={href}
+              to={href}
               className={cx(
                 "font-medium text-brand-black hover:underline cursor-pointer font-raleway hover:opacity-80 duration-100"
               )}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
 

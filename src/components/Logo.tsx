@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
+import { Link } from "react-router-dom";
 
 type Props = DetailedHTMLProps<
   ImgHTMLAttributes<HTMLImageElement>,
@@ -9,11 +10,13 @@ type Props = DetailedHTMLProps<
 
 export const Logo = ({ kinds, ...rest }: Props) => {
   return (
-    <img
-      {...rest}
-      src={kinds === "secondary" ? "/logo-2.jpeg" : "/logo.jpeg"}
-      alt="Benargy Logo"
-      className="w-32 h-20 md:w-56 md:h-24 text-brand-primary"
-    />
+    <Link to="/">
+      <img
+        {...rest}
+        src={kinds === "secondary" ? "/logo-2.png" : "/logo.png"}
+        alt="Benargy Logo"
+        className="w-36 h-14 md:w-60 md:h-18 text-brand-primary"
+      />
+    </Link>
   );
 };
