@@ -2,11 +2,12 @@ import { BodyText, Title } from "../components/Text";
 import { Wrapper } from "../components/Wrapper";
 import { HeroSection } from "../modules/Hero";
 import Slider, { Settings } from "react-slick";
+import { Helmet } from "react-helmet-async";
 
-import { ServicesSection } from "../components/Services";
+import { ServicesSection } from "../modules/services";
 import { AnimatedCounter } from "../components/AnimatedCounter";
 
-const images = ["/hero.svg", "/hero.svg", "/hero.svg"];
+const images = ["/hero-1.png", "/hero-2.png", "/hero-3.png", "/hero.svg"];
 
 const settings: Settings = {
   dots: false,
@@ -23,69 +24,86 @@ const settings: Settings = {
 
 export const HomePage = () => {
   return (
-    <section>
-      <section className="relative overflow-hidden" id="home">
-        <Slider {...settings}>
-          {images.map((image, index) => (
-            <div key={index} className="relative">
-              <img
-                src={image}
-                className="w-full h-full absolute inset-0 object-cover"
-              />
+    <>
+      <Helmet>
+        <title>Home: Benargy Engineering Solutions</title>
+        <meta
+          name="description"
+          content="Benargy Engineering Solutions delivers innovative and
+                sustainable engineering solutions to empower homes, businesses
+                and industries."
+        />
+        <meta
+          property="og:title"
+          content="Home: Benargy Engineering Solutions"
+        />
+      </Helmet>
 
-              <Wrapper className="relative z-10 py-20 sm:py-40">
-                <HeroSection />
-              </Wrapper>
-            </div>
-          ))}
-        </Slider>
-      </section>
+      <section>
+        <section className="relative overflow-hidden" id="home">
+          <Slider {...settings}>
+            {images.map((image, index) => (
+              <div key={index} className="relative">
+                <img
+                  src={image}
+                  className="w-full h-full absolute inset-0 object-cover"
+                />
 
-      <section className="py-16 sm:py-32">
-        <Wrapper className="relative  flex items-center ">
-          <div className="max-w-5xl">
-            <BodyText className=" font-semibold text-xl">About</BodyText>
-            <Title className=" !font-medium mt-4 sm:mt-8">
-              Benargy Engineering Solutions delivers innovative and sustainable
-              engineering solutions to empower homes, businesses and industries.
-            </Title>
-          </div>
-        </Wrapper>
-      </section>
+                <Wrapper className="relative z-10 py-20 sm:py-40">
+                  <HeroSection />
+                </Wrapper>
+              </div>
+            ))}
+          </Slider>
+        </section>
 
-      <section className="bg-brand-gray py-16 sm:py-32" id="mission">
-        <Wrapper>
-          <ServicesSection />
-        </Wrapper>
-      </section>
-
-      <section className="py-8 sm:py-16 relative ">
-        <Wrapper>
-          <div className="flex justify-between gap-10 md:gap-20">
-            <div>
-              <Title className="!text-brand-primary50">
-                <AnimatedCounter from={0} to={10} />+
+        <section className="py-16 sm:py-32">
+          <Wrapper className="relative  flex items-center ">
+            <div className="max-w-5xl">
+              <BodyText className=" font-semibold text-xl">About</BodyText>
+              <Title className=" !font-medium mt-4 sm:mt-8">
+                Benargy Engineering Solutions delivers innovative and
+                sustainable engineering solutions to empower homes, businesses
+                and industries.
               </Title>
-
-              <BodyText>Year of Excellence in Service</BodyText>
             </div>
-            <div>
-              <Title className="!text-brand-primary50">
-                <AnimatedCounter from={190} to={200} />+
-              </Title>
+          </Wrapper>
+        </section>
 
-              <BodyText>Completed Projects</BodyText>
-            </div>
-            <div>
-              <Title className="!text-brand-primary50">
-                <AnimatedCounter from={50} to={67} />+
-              </Title>
+        <section className="bg-brand-gray py-16 sm:py-32" id="mission">
+          <Wrapper>
+            <ServicesSection />
+          </Wrapper>
+        </section>
 
-              <BodyText>happy customers</BodyText>
+        <section className="py-8 sm:py-16 relative ">
+          <Wrapper>
+            <div className="flex justify-between gap-10 md:gap-20">
+              <div>
+                <Title className="!text-brand-primary50">
+                  <AnimatedCounter from={0} to={10} />+
+                </Title>
+
+                <BodyText>Year of Excellence in Service</BodyText>
+              </div>
+              <div>
+                <Title className="!text-brand-primary50">
+                  <AnimatedCounter from={190} to={200} />+
+                </Title>
+
+                <BodyText>Completed Projects</BodyText>
+              </div>
+              <div>
+                <Title className="!text-brand-primary50">
+                  <AnimatedCounter from={50} to={67} />+
+                </Title>
+
+                <BodyText>happy customers</BodyText>
+              </div>
             </div>
-          </div>
-        </Wrapper>
+          </Wrapper>
+        </section>
       </section>
-    </section>
+    </>
   );
 };

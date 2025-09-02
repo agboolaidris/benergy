@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --font-raleway: "Raleway", serif;
   --color-brand-black: #444040;

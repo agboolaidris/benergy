@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { BodyText, Title } from "../components/Text";
 
@@ -15,11 +14,11 @@ export const HeroSection = () => {
           We are your trusted partner in renewable energy solutions, Solar
           energy, Smart home automation, CCTV and electrical solutions.
         </BodyText>
-        <Link to="#">
+        <a href="#contact">
           <Button kinds="secondary" size="lg">
             Get in Touch
           </Button>
-        </Link>
+        </a>
       </div>
     </div>
   );

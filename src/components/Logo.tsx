@@ -15,7 +15,7 @@ export const Logo = ({ kinds, ...rest }: Props) => {
         {...rest}
         src={kinds === "secondary" ? "/logo-2.png" : "/logo.png"}
         alt="Benargy Logo"
-        className="w-36 h-14 md:w-60 md:h-18 text-brand-primary"
+        className="w-36  md:w-60 aspect-[2/0.6] text-brand-primary"
       />
     </Link>
   );

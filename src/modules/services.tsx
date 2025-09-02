@@ -1,82 +1,103 @@
 import { BodyText, SubTitle } from "../components/Text";
-import { ArrowRightIcon } from "../icons/Arrow";
 
-const objectives = [
-  {
-    img: "/services/electrical-design.png",
-    label: "Electrical Design",
-  },
-  {
-    img: "/services/electrical-installation.png",
-    label: "Electrical Installation",
-  },
-  {
-    img: "/services/business-review.svg",
-    label: "Circuit design",
-  },
-  {
-    img: "/services/automation-solutions.png",
-    label: "Automation Solutions",
-  },
-  {
-    img: "/services/expert-consultation.png",
-    label: "Expert Consultation",
-  },
-  {
-    img: "/services/product-development.svg",
-    label: "Control Systems",
-  },
-  {
-    img: "/services/performance-management.svg",
-    label: "Sensor integration",
-  },
-  {
-    img: "/services/training.svg",
-    label: "Training",
-  },
-  {
-    img: "/services/procurement.svg",
-    label: "Electrical system inspections",
-  },
-  {
-    img: "/services/cultural-adaptation.svg",
-    label: "Power quality analysis",
-  },
-  {
-    img: "/services/ios-based-smart-system.png",
-    label: "IoT-based smart systems",
-  },
-  {
-    img: "/services/solar-panel-installation.png",
-    label: "Solar panel installation",
-  },
-];
-
-export const ServicesSection = () => {
+export const ServicesSection = ({
+  showTitle = true,
+}: {
+  showTitle?: boolean;
+}) => {
   return (
     <div>
-      <div>
-        <SubTitle className="!text-white">Our Services</SubTitle>
+      {showTitle && (
+        <div className="mb-8 sm:mb-16 text-center max-w-4xl mx-auto">
+          <SubTitle className="text-center">Our Services</SubTitle>
+        </div>
+      )}
+      <div className="grid sm:grid-cols-2 text-black gap-8 sm:gap-16 items-center">
+        <div className="flex-1 relative aspect-[545/444] max-w-lg  order-first sm:order-last">
+          <img
+            src="/services/solar-installation.jpeg"
+            className="absolute object-cover w-full h-full"
+          />
+        </div>
+        <div className="flex-1 max-w-lg  ">
+          <SubTitle className="!text-brand-purple">
+            Solar/Inverter Installation
+          </SubTitle>
+          <BodyText className="mt-4">
+            Make the switch to clean, sustainable energy with our renewable
+            energy services. We offer solar power installation to reduce your
+            carbon footprint while saving you money on energy bills. Our
+            experienced team ensures the highest efficiency and performance,
+            making your transition to renewable energy seamless and
+            cost-effective.{" "}
+          </BodyText>
+        </div>
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 gap-y-16">
-        {objectives.map(({ img, label }) => (
-          <div>
-            <div className="aspect-[280/365] relative overflow-hidden rounded-md">
-              <img
-                src={img}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-            <div className="flex justify-between gap-2 items-center mt-5">
-              <BodyText className="sm:text-lg max-w-32 !text-white">
-                {label}
-              </BodyText>
-              <div className="bg-white w-6 flex justify-center items-center aspect-square rounded-full ">
-                <ArrowRightIcon className="w-4 h-5 text-black" />
-              </div>
-            </div>
-          </div>
-        ))}
+
+      <div className="grid sm:grid-cols-2 text-black gap-8 sm:gap-16 mt-16 sm:mt-32 items-center">
+        <div className="flex-1 relative aspect-[545/444] max-w-lg order-first overflow-hidden">
+          <img
+            src="/services/camera-installation.jpeg"
+            className="absolute object-cover h-full w-full"
+          />
+        </div>
+        <div className="flex-1 max-w-lg">
+          <SubTitle className="!text-brand-purple">
+            Security Camera & Surveillance
+            <br />
+          </SubTitle>
+          <BodyText className="mt-4">
+            We are committed to providing reliable and comprehensive energy
+            Protect your property with advanced security camera systems tailored
+            to your needs. Whether for residential, commercial, or industrial
+            spaces, our security solutions provide 24/7 surveillance, live
+            monitoring, and remote access. Keep an eye on what matters most,
+            even when you're not around.
+          </BodyText>
+        </div>
+      </div>
+      <div className="grid sm:grid-cols-2 text-black gap-8 sm:gap-16 items-center">
+        <div className="flex-1 relative aspect-[545/444] max-w-lg  order-first sm:order-last">
+          <img
+            src="/services/automation-installation.jpeg"
+            className="absolute object-cover w-full h-full"
+          />
+        </div>
+        <div className="flex-1 max-w-lg ">
+          <SubTitle className="!text-brand-purple">
+            Smart Home Automation
+          </SubTitle>
+          <BodyText className="mt-4">
+            Transform your home into a smart, connected haven with our
+            automation services. Control everything from lighting to
+            temperature, security, and entertainment—all at your fingertips.
+            With our smart home systems, you’ll enjoy enhanced convenience,
+            energy savings, and security like never before.
+          </BodyText>
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 text-black gap-8 sm:gap-16 mt-16 sm:mt-32 items-center">
+        <div className="flex-1 relative aspect-[545/444] max-w-lg order-first overflow-hidden">
+          <img
+            src="/services/electrical-installation.jpeg"
+            className="absolute object-cover h-full w-full"
+          />
+        </div>
+        <div className="flex-1 max-w-lg">
+          <SubTitle className="!text-brand-purple">
+            Electrical Installation services
+            <br />
+          </SubTitle>
+          <BodyText className="mt-4">
+            From new constructions to renovations, our electrical installation
+            services are designed to keep your space safe and functional. We
+            provide expert wiring, panel upgrades, lighting installations,
+            earthing systems, lightning Arrestor and more. With our attention to
+            detail and safety, you can trust us to handle all your electrical
+            needs.
+          </BodyText>
+        </div>
       </div>
     </div>
   );

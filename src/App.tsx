@@ -9,6 +9,9 @@ import { Navbar } from "./components/Navbar";
 import { ContactSection } from "./modules/Contact";
 import { ServicePage } from "./pages/ServicePage";
 import { AboutPage } from "./pages/AboutPage";
+import { ToastContainer } from "./components/ToastContainer";
+import { CustomReview } from "./modules/CustomReview";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 const Layout = () => {
   return (
@@ -21,6 +24,10 @@ const Layout = () => {
 
       <section>
         <Outlet />
+
+        <section className="py-16 sm:py-32 bg-brand-gray ">
+          <CustomReview />
+        </section>
 
         <section
           id="contact"
@@ -40,6 +47,7 @@ const Layout = () => {
           <Footer />
         </Wrapper>
       </section>
+      <ToastContainer />
     </main>
   );
 };
@@ -47,6 +55,7 @@ const Layout = () => {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
