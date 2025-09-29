@@ -26,16 +26,9 @@ export const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Home: Benargy Engineering Solutions</title>
         <meta
           name="description"
-          content="Benargy Engineering Solutions delivers innovative and
-                sustainable engineering solutions to empower homes, businesses
-                and industries."
-        />
-        <meta
-          property="og:title"
-          content="Home: Benargy Engineering Solutions"
+          content="Benargy Engineering Solutions delivers innovative and sustainable engineering solutions across Nigeria. We provide solar and inverter installation, security cameras, smart home automation, and electrical installation services in Lagos, Abuja, Port Harcourt, and nationwide."
         />
       </Helmet>
 
