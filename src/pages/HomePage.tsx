@@ -4,7 +4,7 @@ import { HeroSection } from "../modules/Hero";
 import Slider, { Settings } from "react-slick";
 import { Helmet } from "react-helmet-async";
 
-import { ServicesSection } from "../modules/services";
+import { ServicesSection } from "../modules/Services";
 import { AnimatedCounter } from "../components/AnimatedCounter";
 
 const images = ["/hero-1.png", "/hero-2.png", "/hero-3.png", "/hero.svg"];

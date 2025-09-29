@@ -1,4 +1,4 @@
-import { ServicesSection } from "../modules/services";
+import { ServicesSection } from "../modules/Services";
 import { BodyText, SubTitle } from "../components/Text";
 import { Wrapper } from "../components/Wrapper";
 import { Helmet } from "react-helmet-async";
