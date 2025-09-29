@@ -12,6 +12,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { ToastContainer } from "./components/ToastContainer";
 import { CustomReview } from "./modules/CustomReview";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { GallerySection } from "./modules/Gallery";
 
 const Layout = () => {
   return (
@@ -27,6 +28,9 @@ const Layout = () => {
 
         <section className="py-16 sm:py-32 bg-brand-gray ">
           <CustomReview />
+        </section>
+        <section className="py-16 sm:py-32">
+          <GallerySection />
         </section>
 
         <section
