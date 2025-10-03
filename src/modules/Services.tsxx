@@ -21,7 +21,7 @@ export const ServicesSection = ({
         </div>
         <div className="flex-1 max-w-lg  ">
           <SubTitle className="!text-brand-purple">
-            Solar/Inverter Installation
+            Solar/Inverter Installatio
           </SubTitle>
           <BodyText className="mt-4">
             Make the switch to clean, sustainable energy with our renewable
