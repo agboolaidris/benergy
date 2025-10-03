@@ -6,7 +6,7 @@ import { SubTitle } from "../components/Text";
 import { Button } from "../components/Button";
 
 // All 50 slides
-const slides = Array.from({ length: 30 }, (_, i) => ({
+const slides = Array.from({ length: 32 }, (_, i) => ({
   src: `/gallery/${i}.jpg`,
 }));
 
