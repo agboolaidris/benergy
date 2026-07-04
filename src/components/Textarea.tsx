@@ -9,7 +9,7 @@ import { cva, cx, VariantProps } from "class-variance-authority";
 import { ExclamationTriangleIcon } from "../icons/ExclamationTriangle";
 
 const textareaStyles = cva(
-  "w-full appearance-none p-2 font-raleway text-white  border font-normal leading-loose focus:border px-3 sm:text-sm  focus:outline-none",
+  "w-full appearance-none p-4 font-body text-white rounded-xl border font-normal leading-relaxed transition-colors duration-150 sm:text-sm focus:outline-none",
   {
     defaultVariants: {
       error: false,
@@ -18,11 +18,11 @@ const textareaStyles = cva(
     },
     variants: {
       error: {
-        true: "!border-rose-500",
+        true: "!border-rose-400",
       },
       intent: {
         normal:
-          "border-white placeholder:text-white  focus:border-brand-pink bg-transparent",
+          "border-white/25 placeholder:text-white/50 focus:border-brand-primary bg-white/5 backdrop-blur-sm",
       },
       size: {
         lg: "h-36",
@@ -54,7 +54,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     return (
       <label className={cx("group block")}>
         {label && (
-          <p className="mb-2 block text-sm text-white font-medium leading-6">
+          <p className="mb-2 block text-sm text-white/80 font-medium leading-6 font-body">
             {label}
           </p>
         )}

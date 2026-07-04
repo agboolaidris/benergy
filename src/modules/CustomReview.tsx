@@ -1,6 +1,5 @@
-import { BodyText, SubTitle } from "../components/Text";
-import Slider, { Settings } from "react-slick";
-import { motion } from "framer-motion";
+import { BodyText, Eyebrow, SubTitle } from "../components/Text";
+import { Wrapper } from "../components/Wrapper";
 import { QuoteIcon } from "../icons/Quote";
 import { MapPinIcon } from "../icons/MapPin";
 
@@ -97,42 +96,19 @@ const clientReviews = [
   },
 ];
 
-const settings: Settings = {
-  arrows: false,
-  autoplay: true,
-  autoplaySpeed: 500,
-  cssEase: "linear",
-  dots: false,
-  infinite: true,
-  responsive: [
-    { breakpoint: 300, settings: { slidesToShow: 1 } },
-    { breakpoint: 600, settings: { slidesToShow: 1 } },
-    { breakpoint: 900, settings: { slidesToShow: 2 } },
-    { breakpoint: 1200, settings: { slidesToShow: 3 } },
-  ],
-  slidesToShow: 3,
-  speed: 5000,
-};
-
 export type Review = {
   name: string;
   address: string;
   message: string;
-  rating?: number; // optional if you want to show stars later
 };
 
-const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
+const ReviewCard = ({ review }: { review: Review }) => {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35 }}
-      className="group relative overflow-hidden  p-5  "
-    >
-      <QuoteIcon className="absolute -top-4 -right-4 h-16 w-16 opacity-5 group-hover:opacity-10" />
+    <article className="group relative w-[380px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors hover:bg-white/[0.07] sm:w-[420px]">
+      <QuoteIcon className="absolute -top-4 -right-4 h-16 w-16 text-brand-primary opacity-10 group-hover:opacity-20" />
 
       <div className="mb-3 flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 font-semibold text-brand-primary">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 font-heading font-semibold text-brand-primary50">
           {review.name
             .split(" ")
             .map((n) => n[0])
@@ -140,34 +116,65 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
             .join("")}
         </div>
         <div className="min-w-0">
-          <BodyText className="truncate text-base font-semibold ">
+          <BodyText className="truncate text-base font-semibold !text-white">
             {review.name}
           </BodyText>
-          <BodyText className="mt-0.5 flex items-center gap-1 text-sm ">
+          <BodyText className="mt-0.5 flex items-center gap-1 text-sm !text-white/50">
             <MapPinIcon className="h-4 w-4" /> {review.address}
           </BodyText>
         </div>
       </div>
 
-      <BodyText className="text-sm leading-relaxed">{review.message}</BodyText>
-    </motion.article>
+      <BodyText className="text-sm leading-relaxed !text-white/70">
+        {review.message}
+      </BodyText>
+    </article>
+  );
+};
+
+const MarqueeRow = ({
+  reviews,
+  direction,
+  duration,
+}: {
+  reviews: Review[];
+  direction: "left" | "right";
+  duration: number;
+}) => {
+  return (
+    <div className="group flex w-max">
+      <div
+        className={
+          direction === "left"
+            ? "flex w-max shrink-0 gap-6 animate-marquee-left group-hover:[animation-play-state:paused]"
+            : "flex w-max shrink-0 gap-6 animate-marquee-right group-hover:[animation-play-state:paused]"
+        }
+        style={{ "--marquee-duration": `${duration}s` } as React.CSSProperties}
+      >
+        {[...reviews, ...reviews].map((review, index) => (
+          <ReviewCard review={review} key={index} />
+        ))}
+      </div>
+    </div>
   );
 };
 
 export const CustomReview = () => {
+  const mid = Math.ceil(clientReviews.length / 2);
+  const rowOne = clientReviews.slice(0, mid);
+  const rowTwo = clientReviews.slice(mid);
+
   return (
     <div>
-      <SubTitle className="text-center">What Our Clients Say About Us</SubTitle>
-      <div className="mt-8 sm:mt-16">
-        <Slider {...settings}>
-          {clientReviews.map((review, index) => (
-            <div className="px-4" key={index}>
-              <div className="bg-white rounded cursor-pointer hover:shadow">
-                <ReviewCard review={review} />
-              </div>
-            </div>
-          ))}
-        </Slider>
+      <Wrapper className="text-center">
+        <Eyebrow className="mb-4 w-full justify-center !text-brand-primary50">
+          Testimonials
+        </Eyebrow>
+        <SubTitle className="!text-white">What Our Clients Say About Us</SubTitle>
+      </Wrapper>
+      <div className="relative mt-8 space-y-6 overflow-hidden mask-fade-x sm:mt-16">
+        <MarqueeRow reviews={rowOne} direction="left" duration={55} />
+        <MarqueeRow reviews={rowTwo} direction="right" duration={65} />
       </div>
     </div>
   );

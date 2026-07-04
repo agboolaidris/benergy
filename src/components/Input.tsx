@@ -9,7 +9,7 @@ import { cva, cx, VariantProps } from "class-variance-authority";
 import { ExclamationTriangleIcon } from "../icons/ExclamationTriangle";
 
 const inputStyles = cva(
-  "w-full !appearance-none text-white font-raleway border font-normal leading-loose focus:border px-3 sm:text-sm  focus:outline-none",
+  "w-full !appearance-none text-white font-body rounded-xl border font-normal transition-colors duration-150 px-4 sm:text-sm focus:outline-none",
   {
     defaultVariants: {
       error: false,
@@ -18,11 +18,11 @@ const inputStyles = cva(
     },
     variants: {
       error: {
-        true: "!border-rose-500",
+        true: "!border-rose-400",
       },
       intent: {
         normal:
-          "border-white placeholder:text-white text-white  focus:border-brand-pink bg-transparent",
+          "border-white/25 placeholder:text-white/50 text-white focus:border-brand-primary bg-white/5 backdrop-blur-sm",
       },
       size: {
         lg: "h-16",
@@ -64,13 +64,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <label className={cx("group block")}>
         {label && (
-          <p className="mb-2 block text-sm font-medium leading-6 text-brand-textBlack">
+          <p className="mb-2 block text-sm font-medium leading-6 text-white/80 font-body">
             {label}
           </p>
         )}
         <div className="relative rounded-md">
           {leftIcon && (
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center  justify-center text-brand-textBlack">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center  justify-center text-white/60">
               {leftIcon}
             </div>
           )}
@@ -87,14 +87,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           />
 
           {rightIcon && (
-            <div className="absolute inset-y-0 right-0 z-20 flex items-center  justify-center text-brand-textBlack">
+            <div className="absolute inset-y-0 right-0 z-20 flex items-center  justify-center text-white/60">
               {rightIcon}
             </div>
           )}
 
           {isLoading && (
-            <div className="absolute inset-y-0 right-0 z-20 mr-3 flex items-center  justify-center text-brand-textBlack">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-t-brand-blue" />
+            <div className="absolute inset-y-0 right-0 z-20 mr-3 flex items-center  justify-center text-white/60">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-t-brand-primary" />
             </div>
           )}
         </div>

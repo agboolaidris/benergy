@@ -2,7 +2,7 @@ import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Wrapper } from "../components/Wrapper";
-import { SubTitle } from "../components/Text";
+import { Eyebrow, SubTitle } from "../components/Text";
 import { Button } from "../components/Button";
 
 // All 50 slides
@@ -24,6 +24,7 @@ export const GallerySection = () => {
 
   return (
     <Wrapper className="max-w-7xl">
+      <Eyebrow className="mb-4 justify-center w-full">Our Work</Eyebrow>
       <SubTitle className="text-center mb-8 sm:mb-16">
         Our Projects & On-Site Work
       </SubTitle>
@@ -37,16 +38,18 @@ export const GallerySection = () => {
               setIndex(i);
               setOpen(true);
             }}
-            className="relative w-full break-inside-avoid rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
+            className="group relative w-full break-inside-avoid rounded-2xl overflow-hidden shadow-sm shadow-brand-black/10 hover:shadow-xl hover:shadow-brand-black/20 transition-shadow"
           >
             <img
               src={slide.src}
               alt={`Gallery Image ${i + 1}`}
-              className="w-full object-cover rounded-xl hover:scale-105 transition-transform duration-300"
+              className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="text-white font-semibold text-sm">View</span>
+            <div className="absolute inset-0 bg-brand-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span className="text-white font-body font-semibold text-sm">
+                View
+              </span>
             </div>
           </button>
         ))}
@@ -54,11 +57,8 @@ export const GallerySection = () => {
 
       {/* Show More Button */}
       {visible < slides.length && (
-        <div className="text-center mt-8">
-          <Button
-            onClick={showMore}
-            className="!px-6 !py-2 rounded-full shadow w-max mx-auto transition"
-          >
+        <div className="mt-12 flex justify-center">
+          <Button onClick={showMore} kinds="outline" size="md">
             View More
           </Button>
         </div>

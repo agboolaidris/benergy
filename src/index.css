@@ -4,11 +4,257 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: #ffffff;
+}
+
 @theme {
-  --font-raleway: "Raleway", serif;
-  --color-brand-black: #444040;
-  --color-brand-primary: #00aff0;
-  --color-brand-primary50: #04acf3;
-  --color-brand-secondary: #04324d;
-  --color-brand-gray: #f9f8fc;
+  /* Typography: Bricolage Grotesque for headings (modern, technical),
+     Inter for body copy (highly legible, neutral). */
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Core palette */
+  --color-brand-black: #131c2b;
+  --color-brand-slate: #4b5768;
+  --color-brand-primary: #0ea5e9;
+  --color-brand-primary50: #38bdf8;
+  --color-brand-secondary: #071a2c;
+  --color-brand-secondary50: #0e2a44;
+  --color-brand-gray: #f4f6f9;
+  --color-brand-line: #e4e9f0;
+}
+
+/* Continuous testimonial marquee rows. */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Slow Ken Burns drift for the static hero image. */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* Layered alongside Tailwind's own utilities so specificity (e.g. the
+   group-hover:[animation-play-state:paused] variant) resolves normally
+   instead of always losing to these unlayered custom classes. */
+@layer utilities {
+  /* Subtle engineering grid motif for dark sections (hero, footer, contact). */
+  .bg-grid-line {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.06) 1px,
+        transparent 1px
+      );
+    background-size: 44px 44px;
+  }
+
+  .bg-grid-fade {
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      black 40%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      black 40%,
+      transparent 100%
+    );
+  }
+
+  .animate-marquee-left {
+    animation: marquee-left linear infinite;
+    animation-duration: var(--marquee-duration, 50s);
+  }
+
+  .animate-marquee-right {
+    animation: marquee-right linear infinite;
+    animation-duration: var(--marquee-duration, 50s);
+  }
+
+  .animate-hero-zoom {
+    animation: hero-zoom 20s ease-out forwards;
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-left,
+    .animate-marquee-right,
+    .animate-hero-zoom {
+      animation: none;
+    }
+  }
+}
+
+/* Dark-theme skin for react-phone-input-2, matching the site's Input/Select
+   styling. Selectors repeat `.phone-input-dark` alongside the library's own
+   `.react-tel-input` root so they out-specificity the library's unlayered
+   style.css regardless of import order (unlayered CSS otherwise wins on
+   source order alone, which we can't rely on). */
+.phone-input-dark.react-tel-input {
+  width: 100%;
+  font-family: var(--font-body);
+}
+
+.phone-input-dark.react-tel-input .form-control {
+  width: 100%;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  transition: border-color 0.15s;
+}
+
+.phone-input-dark.react-tel-input .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.phone-input-dark.react-tel-input .form-control:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: none;
+}
+
+.phone-input-dark.react-tel-input .flag-dropdown {
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+.phone-input-dark.react-tel-input .selected-flag {
+  background: transparent;
+  border-radius: 0.75rem 0 0 0.75rem;
+  width: 3.25rem;
+}
+
+.phone-input-dark.react-tel-input .selected-flag:hover,
+.phone-input-dark.react-tel-input .selected-flag:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+.phone-input-dark.react-tel-input .flag-dropdown.open .selected-flag {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem 0 0 0;
+}
+
+.phone-input-dark.react-tel-input .selected-flag .arrow {
+  border-top-color: rgba(255, 255, 255, 0.5);
+}
+
+.phone-input-dark.react-tel-input .selected-flag .arrow.up {
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Library's `.flag-dropdown.open` rule ties our selector's specificity, so
+   source order alone would decide the winner; override it explicitly here so
+   the button never flashes its default white background on open. */
+.phone-input-dark.react-tel-input .flag-dropdown.open {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem 0 0 0;
+}
+
+.phone-input-dark.react-tel-input .country-list {
+  z-index: 20;
+  width: 18rem;
+  margin-top: 0.5rem;
+  background: var(--color-brand-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.phone-input-dark.react-tel-input .country-list .search {
+  position: relative;
+  background: var(--color-brand-secondary);
+  padding: 0.625rem 0.625rem 0.375rem;
+}
+
+.phone-input-dark.react-tel-input .country-list .search-emoji {
+  position: absolute;
+  top: 50%;
+  left: 1.125rem;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.phone-input-dark.react-tel-input .country-list .search-box {
+  width: 100%;
+  margin-left: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  padding: 0.375rem 0.5rem 0.375rem 1.75rem;
+}
+
+.phone-input-dark.react-tel-input .country-list .search-box::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.phone-input-dark.react-tel-input .country-list .country {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.phone-input-dark.react-tel-input .country-list .country .dial-code {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.phone-input-dark.react-tel-input .country-list .country:hover,
+.phone-input-dark.react-tel-input .country-list .country.highlight {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.phone-input-dark.react-tel-input .country-list .no-entries-message {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.phone-input-dark-error.react-tel-input .form-control {
+  border-color: #fb7185 !important;
 }

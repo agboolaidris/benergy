@@ -1,25 +1,53 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "../components/Button";
-import { BodyText, Title } from "../components/Text";
+import { BodyText, Eyebrow, Title } from "../components/Text";
+import { BookServiceModal } from "./BookService";
 
 export const HeroSection = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
-    <div className="max-w-3xl">
+    <motion.div
+      className="max-w-3xl"
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div>
-        <Title className="text-white">
+        <Eyebrow className="!text-brand-primary50 mb-4">
+          <span className="h-1.5 w-1.5 rounded-full bg-brand-primary50" />
+          Engineering Solutions, Built for Nigeria
+        </Eyebrow>
+        <Title as="h1" className="text-white">
           Powering the Future with <br />
           <span className="text-brand-primary50">Smart</span> Engineering
           Solutions
         </Title>
-        <BodyText className="py-5 max-w-md !text-white">
+        <BodyText className="py-5 max-w-md !text-white/80">
           We are your trusted partner in renewable energy solutions, Solar
           energy, Smart home automation, CCTV and electrical solutions.
         </BodyText>
-        <a href="#contact">
-          <Button kinds="secondary" size="lg">
-            Get in Touch
+        <div className="flex flex-wrap gap-4">
+          <a href="#contact">
+            <Button kinds="primary" size="lg">
+              Contact Us
+            </Button>
+          </a>
+          <Button
+            kinds="normal"
+            size="lg"
+            onClick={() => setBookingOpen(true)}
+          >
+            Book a Service
           </Button>
-        </a>
+        </div>
       </div>
-    </div>
+
+      <BookServiceModal
+        open={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+      />
+    </motion.div>
   );
 };
