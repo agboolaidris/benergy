@@ -10,46 +10,19 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Benargy Engineering Solutions | Solar, Security & Electrical Services in
-      Nigeria
-    </title>
-    <meta
-      name="description"
-      content="Benargy Engineering Solutions delivers innovative and sustainable engineering solutions across Nigeria. We provide solar and inverter installation, security cameras, smart home automation, and electrical installation services in Lagos, Abuja, Port Harcourt, and nationwide."
-    />
+    <!--
+      title / description / canonical / og:* / twitter:* are set per-page via
+      react-helmet-async (see src/pages/*.tsx). Helmet only ever adds tags, it
+      never removes ones already in this static file, so duplicating them
+      here would leave two conflicting og:title etc. in the rendered output -
+      crawlers take the first one, silently breaking the per-page overrides.
+    -->
     <meta
       name="keywords"
       content="Benargy Engineering Solutions, Benargy, Benergy, Adegbite Mayowa, engineering company Nigeria, electrical services Nigeria, electrical installation Nigeria, solar panel installation Nigeria, solar installation Lagos, solar installation Abuja, solar installer Port Harcourt, inverter installation Nigeria, renewable energy company Nigeria, national grid Nigeria, transmission line Nigeria, Nigeria electricity, NEPA, security camera installation Lagos, CCTV installer Abuja, smart home automation Nigeria, electrical wiring services Nigeria, Lagos"
     />
     <meta name="author" content="Benargy Engineering Solutions" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://benargy.com/" />
-
-    <!-- Open Graph / Social Sharing -->
-    <meta
-      property="og:title"
-      content="Benargy Engineering Solutions | Solar, Security & Electrical Services in Nigeria"
-    />
-    <meta
-      property="og:description"
-      content="Trusted engineering company serving Lagos, Abuja, Port Harcourt and beyond. Solar power, CCTV surveillance, smart home automation, and expert electrical installation for homes, businesses, and industries."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://benargy.com/" />
-    <meta property="og:image" content="https://benargy.com/logo.png" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Benargy Engineering Solutions | Solar, Security & Electrical Services in Nigeria"
-    />
-    <meta
-      name="twitter:description"
-      content="Serving Lagos, Abuja, Port Harcourt and nationwide. Solar, CCTV, smart home automation, and electrical services to empower homes, businesses and industries."
-    />
-    <meta name="twitter:image" content="https://benargy.com/logo.png" />
 
     <!-- Structured Data / LocalBusiness -->
     <script type="application/ld+json">
